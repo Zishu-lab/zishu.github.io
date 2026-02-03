@@ -1,8 +1,11 @@
 baseURL = "https://username.github.io"
 title = "My Blog"
 languageCode = "en-us"
-paginate = 5
 theme = "PaperMod"
+
+# Pagination configuration
+[pagination]
+  pagerSize = 5
 
 # Enable search
 [outputs]
