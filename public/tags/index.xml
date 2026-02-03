@@ -1,1 +1,68 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Tags on My Blog</title><link>https://zishu-lab.github.io/zishu.github.io/tags/</link><description>Recent content in Tags on My Blog</description><generator>Hugo -- 0.156.0-DEV</generator><language>en-us</language><lastBuildDate>Tue, 03 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://zishu-lab.github.io/zishu.github.io/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>Blogging</title><link>https://zishu-lab.github.io/zishu.github.io/tags/blogging/</link><pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate><guid>https://zishu-lab.github.io/zishu.github.io/tags/blogging/</guid><description/></item><item><title>First-Post</title><link>https://zishu-lab.github.io/zishu.github.io/tags/first-post/</link><pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate><guid>https://zishu-lab.github.io/zishu.github.io/tags/first-post/</guid><description/></item><item><title>Formatting</title><link>https://zishu-lab.github.io/zishu.github.io/tags/formatting/</link><pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate><guid>https://zishu-lab.github.io/zishu.github.io/tags/formatting/</guid><description/></item><item><title>Guide</title><link>https://zishu-lab.github.io/zishu.github.io/tags/guide/</link><pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate><guid>https://zishu-lab.github.io/zishu.github.io/tags/guide/</guid><description/></item><item><title>Images</title><link>https://zishu-lab.github.io/zishu.github.io/tags/images/</link><pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate><guid>https://zishu-lab.github.io/zishu.github.io/tags/images/</guid><description/></item><item><title>Markdown</title><link>https://zishu-lab.github.io/zishu.github.io/tags/markdown/</link><pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate><guid>https://zishu-lab.github.io/zishu.github.io/tags/markdown/</guid><description/></item><item><title>Sample</title><link>https://zishu-lab.github.io/zishu.github.io/tags/sample/</link><pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate><guid>https://zishu-lab.github.io/zishu.github.io/tags/sample/</guid><description/></item><item><title>Welcome</title><link>https://zishu-lab.github.io/zishu.github.io/tags/welcome/</link><pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate><guid>https://zishu-lab.github.io/zishu.github.io/tags/welcome/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on My Blog</title>
+    <link>http://localhost:1313/zishu.github.io/tags/</link>
+    <description>Recent content in Tags on My Blog</description>
+    <generator>Hugo -- 0.156.0-DEV</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 03 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/zishu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blogging</title>
+      <link>http://localhost:1313/zishu.github.io/tags/blogging/</link>
+      <pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zishu.github.io/tags/blogging/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>First-Post</title>
+      <link>http://localhost:1313/zishu.github.io/tags/first-post/</link>
+      <pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zishu.github.io/tags/first-post/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Formatting</title>
+      <link>http://localhost:1313/zishu.github.io/tags/formatting/</link>
+      <pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zishu.github.io/tags/formatting/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Guide</title>
+      <link>http://localhost:1313/zishu.github.io/tags/guide/</link>
+      <pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zishu.github.io/tags/guide/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Images</title>
+      <link>http://localhost:1313/zishu.github.io/tags/images/</link>
+      <pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zishu.github.io/tags/images/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Markdown</title>
+      <link>http://localhost:1313/zishu.github.io/tags/markdown/</link>
+      <pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zishu.github.io/tags/markdown/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sample</title>
+      <link>http://localhost:1313/zishu.github.io/tags/sample/</link>
+      <pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zishu.github.io/tags/sample/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Welcome</title>
+      <link>http://localhost:1313/zishu.github.io/tags/welcome/</link>
+      <pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zishu.github.io/tags/welcome/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
