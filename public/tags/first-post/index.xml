@@ -1,21 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>First-Post on My Blog</title>
-    <link>http://localhost:1313/zishu.github.io/tags/first-post/</link>
-    <description>Recent content in First-Post on My Blog</description>
-    <generator>Hugo -- 0.156.0-DEV</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 03 Feb 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/zishu.github.io/tags/first-post/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Welcome to My Blog</title>
-      <link>http://localhost:1313/zishu.github.io/posts/first-post/</link>
-      <pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/zishu.github.io/posts/first-post/</guid>
-      <description>&lt;h1 id=&#34;welcome-to-my-blog&#34;&gt;Welcome to My Blog!&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>First-Post on My Blog</title><link>https://zishu-lab.github.io/zishu.github.io/tags/first-post/</link><description>Recent content in First-Post on My Blog</description><generator>Hugo -- 0.156.0-DEV</generator><language>en-us</language><lastBuildDate>Tue, 03 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://zishu-lab.github.io/zishu.github.io/tags/first-post/index.xml" rel="self" type="application/rss+xml"/><item><title>Welcome to My Blog</title><link>https://zishu-lab.github.io/zishu.github.io/posts/first-post/</link><pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate><guid>https://zishu-lab.github.io/zishu.github.io/posts/first-post/</guid><description>&lt;h1 id="welcome-to-my-blog"&gt;Welcome to My Blog!&lt;/h1&gt;
 &lt;p&gt;This is my first post on this Hugo blog. I&amp;rsquo;m using the PaperMod theme, which provides a clean and modern design.&lt;/p&gt;
-&lt;h2 id=&#34;getting-started&#34;&gt;Getting Started&lt;/h2&gt;
+&lt;h2 id="getting-started"&gt;Getting Started&lt;/h2&gt;
 &lt;p&gt;Hugo is a fast and flexible static site generator. With PaperMod theme, you get:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Beautiful minimalist design&lt;/li&gt;
@@ -23,8 +8,5 @@
 &lt;li&gt;Responsive layout&lt;/li&gt;
 &lt;li&gt;Fast page loads&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;whats-next&#34;&gt;What&amp;rsquo;s Next&lt;/h2&gt;
-&lt;p&gt;I&amp;rsquo;ll be adding more content soon. Stay tuned!&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;h2 id="whats-next"&gt;What&amp;rsquo;s Next&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;ll be adding more content soon. Stay tuned!&lt;/p&gt;</description></item></channel></rss>

@@ -1,37 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>General on My Blog</title>
-    <link>http://localhost:1313/zishu.github.io/categories/general/</link>
-    <description>Recent content in General on My Blog</description>
-    <generator>Hugo -- 0.156.0-DEV</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 03 Feb 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/zishu.github.io/categories/general/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Sample Post with Images and Tags</title>
-      <link>http://localhost:1313/zishu.github.io/posts/sample-post/</link>
-      <pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/zishu.github.io/posts/sample-post/</guid>
-      <description>&lt;h1 id=&#34;sample-post-with-images-and-tags&#34;&gt;Sample Post with Images and Tags&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>General on My Blog</title><link>https://zishu-lab.github.io/zishu.github.io/categories/general/</link><description>Recent content in General on My Blog</description><generator>Hugo -- 0.156.0-DEV</generator><language>en-us</language><lastBuildDate>Tue, 03 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://zishu-lab.github.io/zishu.github.io/categories/general/index.xml" rel="self" type="application/rss+xml"/><item><title>Sample Post with Images and Tags</title><link>https://zishu-lab.github.io/zishu.github.io/posts/sample-post/</link><pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate><guid>https://zishu-lab.github.io/zishu.github.io/posts/sample-post/</guid><description>&lt;h1 id="sample-post-with-images-and-tags"&gt;Sample Post with Images and Tags&lt;/h1&gt;
 &lt;p&gt;This post demonstrates how to use images and tags in your blog posts.&lt;/p&gt;
-&lt;h2 id=&#34;about-images&#34;&gt;About Images&lt;/h2&gt;
+&lt;h2 id="about-images"&gt;About Images&lt;/h2&gt;
 &lt;p&gt;When adding images to your blog, you can:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Place them in the &lt;code&gt;static/&lt;/code&gt; directory&lt;/li&gt;
 &lt;li&gt;Reference them using standard Markdown syntax&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;![&lt;span style=&#34;color:#f92672&#34;&gt;Alt text&lt;/span&gt;](&lt;span style=&#34;color:#a6e22e&#34;&gt;/images/your-image.jpg&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;using-tags&#34;&gt;Using Tags&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;"&gt;&lt;tr&gt;&lt;td style="vertical-align:top;padding:0;margin:0;border:0;"&gt;
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code&gt;&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%"&gt;
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;![&lt;span style="color:#ff79c6"&gt;Alt text&lt;/span&gt;](&lt;span style="color:#50fa7b"&gt;/images/your-image.jpg&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id="using-tags"&gt;Using Tags&lt;/h2&gt;
 &lt;p&gt;Tags help organize your content. This post has the following tags:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;sample&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;images&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;blogging&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Readers can click on tags to find related content.&lt;/p&gt;
-&lt;h2 id=&#34;categories&#34;&gt;Categories&lt;/h2&gt;
-&lt;p&gt;Categories provide another way to group your posts. This post is in the &amp;ldquo;General&amp;rdquo; category.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;p&gt;Readers can click on tags to find related content.&lt;/p&gt;</description></item></channel></rss>

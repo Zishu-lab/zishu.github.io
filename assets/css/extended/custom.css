@@ -588,3 +588,179 @@ hr,
     text-decoration: underline;
   }
 }
+
+/* ===================================
+   Sakura Falling Animation (Day Mode)
+   =================================== */
+
+@keyframes sakuraFall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sakuraSway {
+  0%, 100% {
+    transform: translateX(0px);
+  }
+  25% {
+    transform: translateX(30px);
+  }
+  50% {
+    transform: translateX(-20px);
+  }
+  75% {
+    transform: translateX(15px);
+  }
+}
+
+.sakura-petal {
+  position: fixed;
+  top: -10vh;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(ellipse at center, #FFB7C5 0%, rgba(255, 183, 197, 0.3) 100%);
+  border-radius: 100% 0 100% 0;
+  pointer-events: none;
+  z-index: 1;
+  animation: sakuraFall linear forwards, sakuraSway ease-in-out infinite;
+  box-shadow: 0 0 5px rgba(255, 183, 197, 0.4);
+}
+
+/* Different sizes and speeds for sakura petals */
+.sakura-petal.small {
+  width: 8px;
+  height: 8px;
+  animation-duration: 10s, 3s;
+}
+
+.sakura-petal.medium {
+  width: 12px;
+  height: 12px;
+  animation-duration: 15s, 4s;
+}
+
+.sakura-petal.large {
+  width: 16px;
+  height: 16px;
+  animation-duration: 20s, 5s;
+}
+
+/* Delay animations for randomness */
+.sakura-petal:nth-child(odd) { animation-delay: 0s, 0s; }
+.sakura-petal:nth-child(even) { animation-delay: 2s, 1s; }
+.sakura-petal:nth-child(3n) { animation-delay: 4s, 2s; }
+.sakura-petal:nth-child(4n) { animation-delay: 6s, 3s; }
+
+/* ===================================
+   Star Twinkling Animation (Night Mode)
+   =================================== */
+
+@keyframes starTwinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes starGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5),
+                0 0 10px rgba(255, 255, 255, 0.3),
+                0 0 15px rgba(255, 223, 128, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                0 0 20px rgba(255, 255, 255, 0.5),
+                0 0 30px rgba(255, 223, 128, 0.4);
+  }
+}
+
+.star {
+  position: fixed;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  animation: starTwinkle ease-in-out infinite, starGlow ease-in-out infinite;
+}
+
+/* Different sizes and brightness for stars */
+.star.small {
+  width: 2px;
+  height: 2px;
+  animation-duration: 2s, 3s;
+}
+
+.star.medium {
+  width: 3px;
+  height: 3px;
+  animation-duration: 3s, 4s;
+}
+
+.star.large {
+  width: 4px;
+  height: 4px;
+  animation-duration: 4s, 5s;
+}
+
+/* Gold stars */
+.star.gold {
+  background: #FFDF80;
+  box-shadow: 0 0 5px rgba(255, 223, 128, 0.6);
+}
+
+/* Random delays for stars */
+.star:nth-child(odd) { animation-delay: 0s, 0s; }
+.star:nth-child(even) { animation-delay: 1s, 0.5s; }
+.star:nth-child(3n) { animation-delay: 2s, 1s; }
+.star:nth-child(4n) { animation-delay: 3s, 1.5s; }
+
+/* ===================================
+   Mode Switching
+   =================================== */
+
+/* Day mode: Show sakura */
+@media (prefers-color-scheme: light) {
+  .sakura-petal {
+    display: block;
+  }
+  .star {
+    display: none;
+  }
+}
+
+/* Night mode: Show stars */
+@media (prefers-color-scheme: dark) {
+  .sakura-petal {
+    display: none;
+  }
+  .star {
+    display: block;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .sakura-petal,
+  .star {
+    display: none !important;
+  }
+}

@@ -18,45 +18,6 @@
     }
 }
 
-@keyframes gradientShift {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-@keyframes shimmer {
-    0% {
-        background-position: -200% 0;
-    }
-    100% {
-        background-position: 200% 0;
-    }
-}
-
-@keyframes pulse {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.7;
-    }
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-5px);
-    }
-}
-
 .reveal,
 .reveal-left,
 .reveal-right {
@@ -135,34 +96,7 @@ a {
 }
 
 body {
-    background: linear-gradient(
-        -45deg,
-        var(--theme),
-        color-mix(in srgb, var(--theme) 95%, transparent),
-        var(--entry),
-        var(--theme)
-    );
-    background-size: 400% 400%;
-    animation: gradientShift 30s ease infinite;
-}
-
-.pulse {
-    animation: pulse 2s ease-in-out infinite;
-}
-
-.float {
-    animation: float 3s ease-in-out infinite;
-}
-
-.shimmer {
-    background: linear-gradient(
-        90deg,
-        var(--tertiary) 0%,
-        color-mix(in srgb, var(--tertiary) 80%, white) 50%,
-        var(--tertiary) 100%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
+    background: var(--theme);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -184,11 +118,6 @@ body {
 
     body {
         background: var(--theme);
-        animation: none;
-    }
-
-    .pulse,
-    .float {
         animation: none;
     }
 }
