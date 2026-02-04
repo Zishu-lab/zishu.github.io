@@ -36,9 +36,7 @@
 
 html, body {
   background-color: var(--bg-color) !important;
-  /* 现代点阵背景：代替老气的渐变 */
-  background-image: radial-gradient(var(--dot-color) 1px, transparent 1px) !important;
-  background-size: 24px 24px !important; /* 点阵间距 */
+  /* 移除点阵背景，让 Canvas 动画更清晰 */
   color: var(--text-main) !important;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
   line-height: 1.8 !important;
@@ -46,8 +44,8 @@ html, body {
 }
 
 canvas {
-  /* 仅保留 Canvas 作为极低透明度的氛围层，不要抢戏 */
-  opacity: 0.3 !important;
+  /* Canvas 完全不透明，让动画清晰可见 */
+  opacity: 1 !important;
   z-index: -1 !important;
 }
 
