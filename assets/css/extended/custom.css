@@ -1,239 +1,227 @@
-/* ===================================
-   完整修复：可读性 + 边框 + 背景
-   =================================== */
+/* =================================================================
+   THEME: Editorial & Dot Grid (现代编辑与点阵)
+   风格：极简、锐利、悬浮、去卡片化
+   ================================================================= */
 
-/* ========== 全局透明 ========== */
-html,
-body {
-  background: transparent !important;
-  background-color: transparent !important;
+:root {
+  /* 调色板 - 极度克制 */
+  --bg-color: #f8f9fa; /* 极淡的灰白，像高级纸张 */
+  --dot-color: #e5e7eb; /* 点阵颜色 */
+  --text-main: #111827; /* 近乎纯黑 */
+  --text-sub: #52525b;  /* 锌灰 */
+  --accent: #2563eb;    /* 克莱因蓝 - 唯一的亮色 */
+  
+  --radius-lg: 24px;
+  --radius-sm: 8px;
+  
+  /* 悬浮阴影 - 只有浮起时才出现 */
+  --shadow-float: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
+  --shadow-nav: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
-/* Canvas 在最底层 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #09090b; /* 纯黑深空 */
+    --dot-color: #27272a;
+    --text-main: #ffffff;
+    --text-sub: #a1a1aa;
+    --accent: #60a5fa;
+    
+    --shadow-float: 0 20px 40px -5px rgba(0, 0, 0, 0.5);
+    --shadow-nav: 0 8px 30px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ================== 全局基础 ================== */
+
+html, body {
+  background-color: var(--bg-color) !important;
+  /* 现代点阵背景：代替老气的渐变 */
+  background-image: radial-gradient(var(--dot-color) 1px, transparent 1px) !important;
+  background-size: 24px 24px !important; /* 点阵间距 */
+  color: var(--text-main) !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  line-height: 1.8 !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
 canvas {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  z-index: -9999 !important;
-  pointer-events: none !important;
+  /* 仅保留 Canvas 作为极低透明度的氛围层，不要抢戏 */
+  opacity: 0.3 !important;
+  z-index: -1 !important;
 }
 
-/* ========== 白天模式 ========== */
-body {
-  color: #0f172a !important; /* 深蓝灰，接近黑色 */
-  background: linear-gradient(135deg, #C4D8F2 0%, #D5E3F0 100%) !important;
-  background-attachment: fixed !important;
+/* ================== 导航栏：悬浮药丸 ================== */
+
+/* 这一步是大改：把整条导航栏变成一个中间的“胶囊” */
+header, nav, .nav {
+  position: sticky !important;
+  top: 2rem !important;
+  width: auto !important;
+  max-width: 600px !important;
+  margin: 0 auto 3rem auto !important; /* 居中 */
+  
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  
+  border-radius: 9999px !important; /* 胶囊形状 */
+  border: 1px solid rgba(0,0,0,0.05) !important;
+  box-shadow: var(--shadow-nav) !important;
+  
+  padding: 0.75rem 2rem !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  z-index: 1000 !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #020617 !important; /* Slate-950 最深 */
+@media (prefers-color-scheme: dark) {
+  header, nav, .nav {
+    background: rgba(24, 24, 27, 0.8) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+  }
+}
+
+/* ================== 内容区域：去边框化 ================== */
+
+/* 彻底移除默认的大白背景框，让文字直接落在点阵背景上 */
+.post-content,
+article,
+main article {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+  max-width: 720px !important; /* 收窄阅读区域，更像Medium/Substack */
+}
+
+/* 标题：巨型、紧凑、杂志感 */
+h1.post-title, 
+.entry-title {
+  font-size: 3rem !important; /* 巨大标题 */
+  font-weight: 800 !important;
+  letter-spacing: -0.05em !important; /* 极紧字距 */
+  line-height: 1.1 !important;
+  margin-bottom: 2rem !important;
+  background: linear-gradient(135deg, var(--text-main) 0%, var(--text-sub) 100%);
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important; /* 文字渐变 */
+}
+
+@media (max-width: 768px) {
+  h1.post-title { font-size: 2.25rem !important; }
+}
+
+/* 正文排版 */
+p {
+  font-size: 1.1rem !important; /* 稍大字号 */
+  margin-bottom: 1.5rem !important;
+  color: var(--text-sub) !important;
+}
+
+/* ================== 列表页：交互式模块 ================== */
+
+/* 列表项平时是“隐形”的，鼠标放上去才会显现 */
+.list .post-entry {
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 2rem !important;
+  margin-bottom: 1rem !important;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* 鼠标悬停时的戏剧性效果 */
+.list .post-entry:hover {
+  background: var(--bg-color) !important; /* 恢复实体背景 */
+  transform: scale(1.02) !important;
+  box-shadow: var(--shadow-float) !important;
+  border: 1px solid var(--dot-color) !important;
+  z-index: 10 !important;
+}
+
+/* 列表标题 */
+.list .post-title {
+  font-size: 1.75rem !important;
   font-weight: 700 !important;
+  letter-spacing: -0.03em !important;
+  margin-bottom: 0.5rem !important;
 }
 
-p, li, td, th, span, div {
-  color: #1e293b !important; /* Slate-800 深色 */
-}
+/* ================== 组件细节：极致打磨 ================== */
 
+/* 链接：动态下划线 */
 a {
-  color: #2563eb !important; /* Blue-600 鲜艳蓝 */
-  font-weight: 600 !important;
+  color: inherit !important;
+  text-decoration: none !important;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size 0.3s ease, color 0.3s ease !important;
 }
 
 a:hover {
-  color: #1d4ed8 !important; /* Blue-700 */
+  color: var(--accent) !important;
+  background-size: 100% 2px !important;
 }
 
-/* ========== 夜间模式 ========== */
-@media (prefers-color-scheme: dark) {
-  body {
-    color: #ffffff !important;
-    background: #0f172a !important;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    color: #ffffff !important;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3) !important;
-  }
-  
-  p, li, td, th, span, div {
-    color: #f1f5f9 !important; /* Slate-100 接近白色 */
-  }
-  
-  a {
-    color: #60a5fa !important; /* Blue-400 亮蓝 */
-    text-shadow: 0 0 10px rgba(96, 165, 250, 0.5) !important;
-  }
-  
-  a:hover {
-    color: #93c5fd !important; /* Blue-300 更亮 */
-  }
-  
-  code, pre {
-    color: #e2e8f0 !important;
-    background: #1e293b !important;
-    border: 1px solid #475569 !important;
-  }
+/* 按钮/标签：实心风格 */
+.button, button, input[type="submit"] {
+  background: var(--text-main) !important;
+  color: var(--bg-color) !important;
+  border-radius: 9999px !important;
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 600 !important;
+  border: none !important;
+  transition: transform 0.2s !important;
 }
 
-/* ========== 卡片样式 ========== */
-.post-entry,
-.post-single,
-.post-content,
-article,
-.entry-content,
-main article {
-  background: rgba(255, 255, 255, 0.85) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border-radius: 1rem !important;
-  padding: 2rem !important;
-  margin: 1rem 0 !important;
-  
-  /* 明显的边框 */
-  border: 2px solid rgba(0, 0, 0, 0.1) !important;
-  box-shadow: 
-    0 4px 6px rgba(0, 0, 0, 0.1),
-    0 10px 20px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
-}
-
-/* 夜间模式卡片 */
-@media (prefers-color-scheme: dark) {
-  .post-entry,
-  .post-single,
-  .post-content,
-  article,
-  .entry-content,
-  main article {
-    background: rgba(30, 41, 59, 0.95) !important;
-    border: 2px solid rgba(255, 255, 255, 0.2) !important;
-    box-shadow: 
-      0 4px 6px rgba(0, 0, 0, 0.5),
-      0 10px 20px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
-  }
-}
-
-/* ========== 导航栏 ========== */
-header,
-nav,
-.nav {
-  background: rgba(255, 255, 255, 0.9) !important;
-  backdrop-filter: blur(10px) !important;
-  border: 2px solid rgba(0, 0, 0, 0.1) !important;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
-}
-
-@media (prefers-color-scheme: dark) {
-  header,
-  nav,
-  .nav {
-    background: rgba(15, 23, 42, 0.95) !important;
-    border: 2px solid rgba(255, 255, 255, 0.2) !important;
-  }
-}
-
-/* ========== 列表项卡片 ========== */
-.list .post-entry {
-  background: rgba(255, 255, 255, 0.9) !important;
-  border: 2px solid rgba(0, 0, 0, 0.15) !important;
-  margin-bottom: 1.5rem !important;
-  transition: all 0.3s ease !important;
-}
-
-.list .post-entry:hover {
-  background: rgba(255, 255, 255, 0.95) !important;
-  border-color: #3b82f6 !important;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+.button:hover, button:hover {
   transform: translateY(-2px) !important;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
 }
 
-@media (prefers-color-scheme: dark) {
-  .list .post-entry {
-    background: rgba(30, 41, 59, 0.9) !important;
-    border: 2px solid rgba(255, 255, 255, 0.25) !important;
-  }
-  
-  .list .post-entry:hover {
-    background: rgba(30, 41, 59, 0.95) !important;
-    border-color: #60a5fa !important;
-  }
-}
-
-/* ========== 标题样式 ========== */
-.post-title,
-.entry-title,
-h1.post-title {
-  font-size: 2rem !important;
-  font-weight: 800 !important;
-  margin-bottom: 1rem !important;
-  line-height: 1.2 !important;
-}
-
-/* ========== 代码块 ========== */
-pre, code {
-  background: #f1f5f9 !important;
-  border: 2px solid #cbd5e1 !important;
-  color: #0f172a !important;
-  border-radius: 0.5rem !important;
-  padding: 1rem !important;
-}
-
-@media (prefers-color-scheme: dark) {
-  pre, code {
-    background: #0f172a !important;
-    border: 2px solid #475569 !important;
-    color: #f1f5f9 !important;
-  }
-}
-
-/* ========== 表格 ========== */
-table {
-  border: 2px solid #cbd5e1 !important;
-  border-collapse: collapse !important;
-  width: 100% !important;
-}
-
-th, td {
-  border: 1px solid #cbd5e1 !important;
-  padding: 0.75rem !important;
-}
-
-th {
-  background: #e2e8f0 !important;
-  color: #0f172a !important;
-  font-weight: 700 !important;
-}
-
-@media (prefers-color-scheme: dark) {
-  table {
-    border-color: #475569 !important;
-  }
-  
-  th, td {
-    border-color: #475569 !important;
-  }
-  
-  th {
-    background: #1e293b !important;
-    color: #ffffff !important;
-  }
-}
-
-/* ========== 引用块 ========== */
+/* 引用块：左侧极简线条 */
 blockquote {
-  border-left: 4px solid #3b82f6 !important;
-  background: #eff6ff !important;
-  padding: 1rem 1.5rem !important;
-  color: #1e3a8a !important;
+  border-left: 3px solid var(--accent) !important;
+  background: transparent !important; /* 去掉背景 */
+  padding-left: 1.5rem !important;
+  font-style: italic !important;
+  font-size: 1.2rem !important;
+  color: var(--text-main) !important;
+  margin: 2rem 0 !important;
 }
 
+/* 代码块：无边框沉浸式 */
+pre, code {
+  background: #18181b !important; /* 总是深色 */
+  color: #e4e4e7 !important;
+  border: none !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.9em !important;
+}
+
+/* 图片：圆角与阴影 */
+img {
+  border-radius: var(--radius-lg) !important;
+  transition: transform 0.5s ease !important;
+}
+
+img:hover {
+  transform: scale(1.01) !important;
+  box-shadow: var(--shadow-float) !important;
+}
+
+/* 滚动条：极细 */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
 @media (prefers-color-scheme: dark) {
-  blockquote {
-    border-left-color: #60a5fa !important;
-    background: #1e3a5f !important;
-    color: #dbeafe !important;
-  }
+  ::-webkit-scrollbar-thumb { background: #3f3f46; }
 }
