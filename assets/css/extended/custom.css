@@ -1,20 +1,15 @@
 /* ===================================
-   强制修复：Canvas 背景和可读性
+   完整修复：可读性 + 边框 + 背景
    =================================== */
 
-/* 强制所有元素透明 */
-* {
-  background-color: transparent !important;
-}
-
-/* body 和 html 透明 */
+/* ========== 全局透明 ========== */
 html,
 body {
   background: transparent !important;
   background-color: transparent !important;
 }
 
-/* Canvas 强制在最底层 */
+/* Canvas 在最底层 */
 canvas {
   position: fixed !important;
   top: 0 !important;
@@ -25,56 +20,220 @@ canvas {
   pointer-events: none !important;
 }
 
-/* 白天模式文字颜色 */
+/* ========== 白天模式 ========== */
 body {
-  color: #1e293b !important;
+  color: #0f172a !important; /* 深蓝灰，接近黑色 */
+  background: linear-gradient(135deg, #C4D8F2 0%, #D5E3F0 100%) !important;
+  background-attachment: fixed !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #0f172a !important;
+  color: #020617 !important; /* Slate-950 最深 */
+  font-weight: 700 !important;
 }
 
-/* 夜间模式高对比 */
+p, li, td, th, span, div {
+  color: #1e293b !important; /* Slate-800 深色 */
+}
+
+a {
+  color: #2563eb !important; /* Blue-600 鲜艳蓝 */
+  font-weight: 600 !important;
+}
+
+a:hover {
+  color: #1d4ed8 !important; /* Blue-700 */
+}
+
+/* ========== 夜间模式 ========== */
 @media (prefers-color-scheme: dark) {
   body {
-    color: #f1f5f9 !important;
+    color: #ffffff !important;
+    background: #0f172a !important;
   }
   
   h1, h2, h3, h4, h5, h6 {
     color: #ffffff !important;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3) !important;
   }
   
-  p, li, td, th, span {
-    color: #e2e8f0 !important;
+  p, li, td, th, span, div {
+    color: #f1f5f9 !important; /* Slate-100 接近白色 */
   }
   
   a {
-    color: #60a5fa !important;
+    color: #60a5fa !important; /* Blue-400 亮蓝 */
+    text-shadow: 0 0 10px rgba(96, 165, 250, 0.5) !important;
   }
   
   a:hover {
-    color: #93c5fd !important;
+    color: #93c5fd !important; /* Blue-300 更亮 */
+  }
+  
+  code, pre {
+    color: #e2e8f0 !important;
+    background: #1e293b !important;
+    border: 1px solid #475569 !important;
   }
 }
 
-/* 卡片玻璃效果 */
+/* ========== 卡片样式 ========== */
 .post-entry,
 .post-single,
 .post-content,
-article {
-  background: rgba(255, 255, 255, 0.7) !important;
-  backdrop-filter: blur(10px) !important;
+article,
+.entry-content,
+main article {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   border-radius: 1rem !important;
-  padding: 1.5rem !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  padding: 2rem !important;
+  margin: 1rem 0 !important;
+  
+  /* 明显的边框 */
+  border: 2px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    0 10px 20px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
 }
 
+/* 夜间模式卡片 */
 @media (prefers-color-scheme: dark) {
   .post-entry,
   .post-single,
   .post-content,
-  article {
+  article,
+  .entry-content,
+  main article {
+    background: rgba(30, 41, 59, 0.95) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 
+      0 4px 6px rgba(0, 0, 0, 0.5),
+      0 10px 20px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+/* ========== 导航栏 ========== */
+header,
+nav,
+.nav {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 2px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  header,
+  nav,
+  .nav {
+    background: rgba(15, 23, 42, 0.95) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+  }
+}
+
+/* ========== 列表项卡片 ========== */
+.list .post-entry {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 2px solid rgba(0, 0, 0, 0.15) !important;
+  margin-bottom: 1.5rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.list .post-entry:hover {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: #3b82f6 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-2px) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .list .post-entry {
     background: rgba(30, 41, 59, 0.9) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border: 2px solid rgba(255, 255, 255, 0.25) !important;
+  }
+  
+  .list .post-entry:hover {
+    background: rgba(30, 41, 59, 0.95) !important;
+    border-color: #60a5fa !important;
+  }
+}
+
+/* ========== 标题样式 ========== */
+.post-title,
+.entry-title,
+h1.post-title {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  margin-bottom: 1rem !important;
+  line-height: 1.2 !important;
+}
+
+/* ========== 代码块 ========== */
+pre, code {
+  background: #f1f5f9 !important;
+  border: 2px solid #cbd5e1 !important;
+  color: #0f172a !important;
+  border-radius: 0.5rem !important;
+  padding: 1rem !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  pre, code {
+    background: #0f172a !important;
+    border: 2px solid #475569 !important;
+    color: #f1f5f9 !important;
+  }
+}
+
+/* ========== 表格 ========== */
+table {
+  border: 2px solid #cbd5e1 !important;
+  border-collapse: collapse !important;
+  width: 100% !important;
+}
+
+th, td {
+  border: 1px solid #cbd5e1 !important;
+  padding: 0.75rem !important;
+}
+
+th {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  table {
+    border-color: #475569 !important;
+  }
+  
+  th, td {
+    border-color: #475569 !important;
+  }
+  
+  th {
+    background: #1e293b !important;
+    color: #ffffff !important;
+  }
+}
+
+/* ========== 引用块 ========== */
+blockquote {
+  border-left: 4px solid #3b82f6 !important;
+  background: #eff6ff !important;
+  padding: 1rem 1.5rem !important;
+  color: #1e3a8a !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  blockquote {
+    border-left-color: #60a5fa !important;
+    background: #1e3a5f !important;
+    color: #dbeafe !important;
   }
 }
