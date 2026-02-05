@@ -1,225 +1,35 @@
-/* =================================================================
-   THEME: Editorial & Dot Grid (现代编辑与点阵)
-   风格：极简、锐利、悬浮、去卡片化
-   ================================================================= */
+/* -----------------------------------------------------------
+   修正 PaperMod 夜间模式配色
+   文件位置: assets/css/extended/custom.css
+   ----------------------------------------------------------- */
 
-:root {
-  /* 调色板 - 极度克制 */
-  --bg-color: #f8f9fa; /* 极淡的灰白，像高级纸张 */
-  --dot-color: #e5e7eb; /* 点阵颜色 */
-  --text-main: #111827; /* 近乎纯黑 */
-  --text-sub: #52525b;  /* 锌灰 */
-  --accent: #2563eb;    /* 克莱因蓝 - 唯一的亮色 */
-  
-  --radius-lg: 24px;
-  --radius-sm: 8px;
-  
-  /* 悬浮阴影 - 只有浮起时才出现 */
-  --shadow-float: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
-  --shadow-nav: 0 8px 30px rgba(0, 0, 0, 0.08);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: #09090b; /* 纯黑深空 */
-    --dot-color: #27272a;
-    --text-main: #ffffff;
-    --text-sub: #a1a1aa;
-    --accent: #60a5fa;
+/* 1. 针对夜间模式 (.dark) 修改变量 */
+.dark {
+    /* 左侧大背景：纯黑 */
+    --theme: #000000;
     
-    --shadow-float: 0 20px 40px -5px rgba(0, 0, 0, 0.5);
-    --shadow-nav: 0 8px 30px rgba(0, 0, 0, 0.5);
-  }
+    /* 中间文章卡片背景：深灰色 (如果是纯黑就看不出边界了，建议深灰) */
+    --entry: #1c1c1c;
+    
+    /* 文字颜色：白色 */
+    --primary: #eeeeee;
+    --secondary: #cccccc;
+    
+    /* 边框颜色：调暗 */
+    --border: #333333;
 }
 
-/* ================== 全局基础 ================== */
-
-html, body {
-  background-color: var(--bg-color) !important;
-  /* 移除点阵背景，让 Canvas 动画更清晰 */
-  color: var(--text-main) !important;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
-  line-height: 1.8 !important;
-  -webkit-font-smoothing: antialiased !important;
+/* 2. 强制修正：如果变量不生效，直接暴力覆盖样式 */
+body.dark, 
+body.dark .page-wrapper, 
+html.dark body {
+    background-color: #000000 !important; /* 强制背景黑 */
+    color: #eeeeee !important;
 }
 
-canvas {
-  /* Canvas 完全不透明，让动画清晰可见 */
-  opacity: 1 !important;
-  z-index: -1 !important;
-}
-
-/* ================== 导航栏：悬浮药丸 ================== */
-
-/* 这一步是大改：把整条导航栏变成一个中间的“胶囊” */
-header, nav, .nav {
-  position: sticky !important;
-  top: 2rem !important;
-  width: auto !important;
-  max-width: 600px !important;
-  margin: 0 auto 3rem auto !important; /* 居中 */
-  
-  background: rgba(255, 255, 255, 0.8) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  
-  border-radius: 9999px !important; /* 胶囊形状 */
-  border: 1px solid rgba(0,0,0,0.05) !important;
-  box-shadow: var(--shadow-nav) !important;
-  
-  padding: 0.75rem 2rem !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  z-index: 1000 !important;
-}
-
-@media (prefers-color-scheme: dark) {
-  header, nav, .nav {
-    background: rgba(24, 24, 27, 0.8) !important;
-    border: 1px solid rgba(255,255,255,0.1) !important;
-  }
-}
-
-/* ================== 内容区域：去边框化 ================== */
-
-/* 彻底移除默认的大白背景框，让文字直接落在点阵背景上 */
-.post-content,
-article,
-main article {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
-  padding: 0 !important;
-  margin: 0 auto !important;
-  max-width: 720px !important; /* 收窄阅读区域，更像Medium/Substack */
-}
-
-/* 标题：巨型、紧凑、杂志感 */
-h1.post-title, 
-.entry-title {
-  font-size: 3rem !important; /* 巨大标题 */
-  font-weight: 800 !important;
-  letter-spacing: -0.05em !important; /* 极紧字距 */
-  line-height: 1.1 !important;
-  margin-bottom: 2rem !important;
-  background: linear-gradient(135deg, var(--text-main) 0%, var(--text-sub) 100%);
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important; /* 文字渐变 */
-}
-
-@media (max-width: 768px) {
-  h1.post-title { font-size: 2.25rem !important; }
-}
-
-/* 正文排版 */
-p {
-  font-size: 1.1rem !important; /* 稍大字号 */
-  margin-bottom: 1.5rem !important;
-  color: var(--text-sub) !important;
-}
-
-/* ================== 列表页：交互式模块 ================== */
-
-/* 列表项平时是“隐形”的，鼠标放上去才会显现 */
-.list .post-entry {
-  background: transparent !important;
-  border: 1px solid transparent !important;
-  border-radius: var(--radius-lg) !important;
-  padding: 2rem !important;
-  margin-bottom: 1rem !important;
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-  position: relative !important;
-  overflow: hidden !important;
-}
-
-/* 鼠标悬停时的戏剧性效果 */
-.list .post-entry:hover {
-  background: var(--bg-color) !important; /* 恢复实体背景 */
-  transform: scale(1.02) !important;
-  box-shadow: var(--shadow-float) !important;
-  border: 1px solid var(--dot-color) !important;
-  z-index: 10 !important;
-}
-
-/* 列表标题 */
-.list .post-title {
-  font-size: 1.75rem !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.03em !important;
-  margin-bottom: 0.5rem !important;
-}
-
-/* ================== 组件细节：极致打磨 ================== */
-
-/* 链接：动态下划线 */
-a {
-  color: inherit !important;
-  text-decoration: none !important;
-  background-image: linear-gradient(var(--accent), var(--accent));
-  background-size: 0% 2px;
-  background-repeat: no-repeat;
-  background-position: left bottom;
-  transition: background-size 0.3s ease, color 0.3s ease !important;
-}
-
-a:hover {
-  color: var(--accent) !important;
-  background-size: 100% 2px !important;
-}
-
-/* 按钮/标签：实心风格 */
-.button, button, input[type="submit"] {
-  background: var(--text-main) !important;
-  color: var(--bg-color) !important;
-  border-radius: 9999px !important;
-  padding: 0.75rem 1.5rem !important;
-  font-weight: 600 !important;
-  border: none !important;
-  transition: transform 0.2s !important;
-}
-
-.button:hover, button:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
-}
-
-/* 引用块：左侧极简线条 */
-blockquote {
-  border-left: 3px solid var(--accent) !important;
-  background: transparent !important; /* 去掉背景 */
-  padding-left: 1.5rem !important;
-  font-style: italic !important;
-  font-size: 1.2rem !important;
-  color: var(--text-main) !important;
-  margin: 2rem 0 !important;
-}
-
-/* 代码块：无边框沉浸式 */
-pre, code {
-  background: #18181b !important; /* 总是深色 */
-  color: #e4e4e7 !important;
-  border: none !important;
-  border-radius: var(--radius-sm) !important;
-  font-family: 'JetBrains Mono', monospace !important;
-  font-size: 0.9em !important;
-}
-
-/* 图片：圆角与阴影 */
-img {
-  border-radius: var(--radius-lg) !important;
-  transition: transform 0.5s ease !important;
-}
-
-img:hover {
-  transform: scale(1.01) !important;
-  box-shadow: var(--shadow-float) !important;
-}
-
-/* 滚动条：极细 */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 3px; }
-::-webkit-scrollbar-track { background: transparent; }
-@media (prefers-color-scheme: dark) {
-  ::-webkit-scrollbar-thumb { background: #3f3f46; }
+body.dark article,
+body.dark .post-entry,
+body.dark .post-content {
+    background-color: #1c1c1c !important; /* 强制卡片黑 */
+    color: #eeeeee !important;
 }
