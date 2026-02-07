@@ -1,6 +1,6 @@
 baseURL = "https://zishu-lab.github.io/"
-title = "My Blog"
-languageCode = "en-us"
+title = "Zishu-lab's Space"
+languageCode = "zh-cn"
 theme = "PaperMod"
 
 # Pagination configuration (for Hugo v0.128+)
@@ -15,16 +15,16 @@ theme = "PaperMod"
 [params]
   showReadingTime = true
   showShareButtons = true
-  enableMathJax = true  # 启用 KaTeX 数学公式支持
-  # 启用代码高亮（使用 Chroma）
+  enableMathJax = true  # Enable KaTeX math support
+  # Enable syntax highlighting (using Chroma)
   [params.assets]
-    disableHLJS = true  # 禁用 Highlight.js，使用 Hugo 内置 Chroma
+    disableHLJS = true  # Disable Highlight.js, use Hugo built-in Chroma
 
-# 代码高亮配置
+# Syntax highlighting configuration
 [markup]
   [markup.highlight]
     anchorLineNos = false
     codeFences = true
     guessSyntax = true
     lineNos = true
-    style = "dracula"  # 暗色主题，适合代码展示
+    style = "dracula"  # Dark theme suitable for code display

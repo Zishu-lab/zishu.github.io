@@ -4,9 +4,13 @@
 
   // 创建 canvas 元素
   const canvas = document.createElement('canvas');
-  canvas.className = 'fixed inset-0 pointer-events-none z-[-1]';
-  canvas.style.width = '100%';
-  canvas.style.height = '100%';
+  canvas.style.position = 'fixed';
+  canvas.style.top = '0';
+  canvas.style.left = '0';
+  canvas.style.width = '100vw';
+  canvas.style.height = '100vh';
+  canvas.style.zIndex = '-1';
+  canvas.style.pointerEvents = 'none';
   document.body.appendChild(canvas);
 
   const ctx = canvas.getContext('2d');

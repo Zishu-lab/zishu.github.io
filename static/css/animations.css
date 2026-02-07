@@ -42,7 +42,7 @@
 .reveal-left.active,
 .reveal-right.active {
     opacity: 1;
-    transform: translate(0);
+    transform: translate(0, 0);
 }
 
 .post-entry {
@@ -95,10 +95,6 @@ a {
     animation-delay: 0.3s;
 }
 
-body {
-    background: var(--theme);
-}
-
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -114,11 +110,6 @@ body {
     .reveal-right {
         opacity: 1;
         transform: none;
-    }
-
-    body {
-        background: var(--theme);
-        animation: none;
     }
 }
 

@@ -1,35 +1,34 @@
 /* -----------------------------------------------------------
-   修正 PaperMod 夜间模式配色
-   文件位置: assets/css/extended/custom.css
+   Fix PaperMod dark mode colors
+   File location: assets/css/extended/custom.css
    ----------------------------------------------------------- */
 
-/* 1. 针对夜间模式 (.dark) 修改变量 */
-.dark {
-    /* 左侧大背景：纯黑 */
+/* 1. Fix dark mode color variables */
+[data-theme="dark"] {
+    /* Main background: pure black */
     --theme: #000000;
-    
-    /* 中间文章卡片背景：深灰色 (如果是纯黑就看不出边界了，建议深灰) */
+
+    /* Article card background: dark gray */
     --entry: #1c1c1c;
-    
-    /* 文字颜色：白色 */
+
+    /* Text colors: white */
     --primary: #eeeeee;
     --secondary: #cccccc;
-    
-    /* 边框颜色：调暗 */
+
+    /* Border colors: darker */
     --border: #333333;
 }
 
-/* 2. 强制修正：如果变量不生效，直接暴力覆盖样式 */
-body.dark, 
-body.dark .page-wrapper, 
-html.dark body {
-    background-color: #000000 !important; /* 强制背景黑 */
+/* 2. Force override styles if variables don't work */
+[data-theme="dark"] body,
+[data-theme="dark"] .page-wrapper {
+    background-color: #000000 !important;
     color: #eeeeee !important;
 }
 
-body.dark article,
-body.dark .post-entry,
-body.dark .post-content {
-    background-color: #1c1c1c !important; /* 强制卡片黑 */
+[data-theme="dark"] article,
+[data-theme="dark"] .post-entry,
+[data-theme="dark"] .post-content {
+    background-color: #1c1c1c !important;
     color: #eeeeee !important;
 }
