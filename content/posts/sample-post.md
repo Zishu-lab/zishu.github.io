@@ -4,9 +4,8 @@ date: 2026-02-03
 draft: false
 tags: ["sample", "images", "blogging"]
 categories: ["General"]
+description: "一篇示例文章，展示如何在博客中使用图片、标签和分类功能。"
 ---
-
-# Sample Post with Images and Tags
 
 This post demonstrates how to use images and tags in your blog posts.
 

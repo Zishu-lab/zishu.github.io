@@ -13,9 +13,16 @@ theme = "PaperMod"
 
 # PaperMod features
 [params]
+  # Site metadata for SEO
+  description = "Zishu-lab 的个人技术博客，分享编程、开发和思考"
+  keywords = ["博客", "技术", "编程", "开发", "Hugo", "PaperMod"]
+  author = "Zishu-lab"
+
+  # Display options
   showReadingTime = true
   showShareButtons = true
   enableMathJax = true  # Enable KaTeX math support
+
   # Enable syntax highlighting (using Chroma)
   [params.assets]
     disableHLJS = true  # Disable Highlight.js, use Hugo built-in Chroma

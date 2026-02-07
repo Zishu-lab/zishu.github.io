@@ -3,9 +3,8 @@ title: "Welcome to My Blog"
 date: 2026-02-03
 draft: false
 tags: ["welcome", "first-post"]
+description: "欢迎来到我的博客！这里使用 Hugo 和 PaperMod 主题构建，分享技术文章和思考。"
 ---
-
-# Welcome to My Blog!
 
 This is my first post on this Hugo blog. I'm using the PaperMod theme, which provides a clean and modern design.
 

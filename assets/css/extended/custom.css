@@ -1,34 +1,157 @@
 /* -----------------------------------------------------------
-   Fix PaperMod dark mode colors
+   Custom styles for PaperMod theme
    File location: assets/css/extended/custom.css
    ----------------------------------------------------------- */
 
-/* 1. Fix dark mode color variables */
+/* ============================================
+   1. CSS Variables - Dark mode colors
+   ============================================ */
+
 [data-theme="dark"] {
-    /* Main background: pure black */
     --theme: #000000;
-
-    /* Article card background: dark gray */
-    --entry: #1c1c1c;
-
-    /* Text colors: white */
+    --entry: #141414;
     --primary: #eeeeee;
     --secondary: #cccccc;
-
-    /* Border colors: darker */
-    --border: #333333;
+    --border: #2a2a2a;
 }
 
-/* 2. Force override styles if variables don't work */
-[data-theme="dark"] body,
-[data-theme="dark"] .page-wrapper {
-    background-color: #000000 !important;
-    color: #eeeeee !important;
+/* ============================================
+   2. Dark mode overrides (using higher specificity)
+   ============================================ */
+
+html[data-theme="dark"] body {
+    background-color: #000000;
+    color: #eeeeee;
 }
 
-[data-theme="dark"] article,
-[data-theme="dark"] .post-entry,
-[data-theme="dark"] .post-content {
-    background-color: #1c1c1c !important;
-    color: #eeeeee !important;
+html[data-theme="dark"] article,
+html[data-theme="dark"] .post-entry,
+html[data-theme="dark"] .post-content {
+    background-color: #141414;
+    color: #eeeeee;
+}
+
+/* ============================================
+   3. Article card styling
+   ============================================ */
+
+.post-entry {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    padding-top: 1.5rem;
+}
+
+[data-theme="dark"] .post-entry {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+.first-entry {
+    padding: 2.5rem;
+    padding-top: 2rem;
+}
+
+/* ============================================
+   4. Title and spacing fixes
+   ============================================ */
+
+/* 首页卡片标题 */
+.entry-header {
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+}
+
+.post-entry .entry-header h2 {
+    margin-top: 0.5rem;
+}
+
+.first-entry .entry-header h1 {
+    margin-top: 1rem;
+}
+
+.entry-footer {
+    margin-top: 1rem;
+    padding: 0 0.5rem;
+}
+
+/* 单篇文章页面标题 */
+.post-header {
+    padding: 0 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.post-title {
+    padding: 0 0.5rem;
+}
+
+/* 防止单篇文章页面标题重复 */
+article.post-single .post-content > h1:first-child {
+    display: none !important;
+}
+
+/* 如果标题被 anchored_headings 包装 */
+article.post-single .post-content > h1:first-child > a.anchor {
+    display: none !important;
+}
+
+/* ============================================
+   5. Archive page cards
+   ============================================ */
+
+.archive-entry {
+    padding: 1rem;
+    margin: 10px 0;
+}
+
+.archive-entry-title {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   6. Search results cards
+   ============================================ */
+
+#searchResults li {
+    padding: 1rem;
+}
+
+#searchResults li a:first-child {
+    margin-top: 0.3rem;
+    display: inline-block;
+}
+
+/* ============================================
+   7. Post content spacing
+   ============================================ */
+
+.entry-content {
+    padding: 0 0.5rem;
+}
+
+.post-content {
+    padding: 0 1.5rem;
+}
+
+/* ============================================
+   8. Responsive adjustments
+   ============================================ */
+
+@media (max-width: 768px) {
+    .post-entry {
+        padding: 1.5rem;
+        padding-top: 1.25rem;
+    }
+
+    .first-entry {
+        padding: 2rem;
+        padding-top: 1.5rem;
+    }
+
+    .post-entry .entry-header h2 {
+        margin-top: 0.3rem;
+    }
+
+    .first-entry .entry-header h1 {
+        margin-top: 0.7rem;
+    }
 }

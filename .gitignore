@@ -1,1 +1,28 @@
-public/
+# Hugo
+/public/
+/resources/_gen/
+/assets/jsconfig.json
+/hugo.log
+/.hugo_build.lock
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Editor
+.vscode/
+.idea/
+*.sublime-*
+
+# Temporary
+*.tmp
+*.bak
+image.png
+
+# Node (if using npm for asset processing)
+node_modules/
+package-lock.json
+yarn.lock

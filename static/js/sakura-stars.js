@@ -20,11 +20,26 @@
   let particles = [];
   let width = window.innerWidth;
   let height = window.innerHeight;
-  let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let isDarkMode = false;
   let isHidden = false;
+  let isStopped = false;
 
   // 检测减少动画偏好
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  // 获取当前主题状态
+  function getCurrentTheme() {
+    const theme = document.documentElement.getAttribute('data-theme');
+    if (theme === 'dark') return true;
+    if (theme === 'light') return false;
+    // auto 模式下检测系统偏好
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+
+  // 更新主题状态
+  function updateTheme() {
+    isDarkMode = getCurrentTheme();
+  }
 
   // 调整 canvas 大小
   function resize() {
@@ -34,9 +49,13 @@
     canvas.height = height;
   }
 
-  // 初始化粒子
+  // 初始化粒子（根据屏幕大小限制数量）
   function initParticles() {
-    const count = Math.floor((width * height) / 15000);
+    // 计算粒子数量，设置上限防止性能问题
+    const baseCount = Math.floor((width * height) / 15000);
+    const maxCount = 100; // 最大粒子数
+    const count = Math.min(baseCount, maxCount);
+
     particles = [];
 
     for (let i = 0; i < count; i++) {
@@ -61,16 +80,16 @@
     ctx.save();
     ctx.translate(x, y);
     ctx.rotate(rotation);
-    
+
     ctx.beginPath();
     ctx.ellipse(0, 0, radius * 2, radius, 0, 0, Math.PI * 2);
-    
+
     const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, radius * 2);
     gradient.addColorStop(0, `rgba(255, 200, 210, ${opacity})`);
     gradient.addColorStop(1, `rgba(255, 150, 170, ${opacity * 0.5})`);
     ctx.fillStyle = gradient;
     ctx.fill();
-    
+
     ctx.restore();
   }
 
@@ -107,7 +126,7 @@
       ctx.shadowColor = 'rgba(255, 255, 255, 0.6)';
       ctx.shadowBlur = radius;
     }
-    
+
     ctx.fill();
     ctx.shadowBlur = 0;
     ctx.restore();
@@ -117,7 +136,7 @@
   function drawCircle(x, y, radius, opacity, isDark) {
     ctx.beginPath();
     ctx.arc(x, y, radius, 0, Math.PI * 2);
-    
+
     if (isDark) {
       ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
       ctx.shadowColor = 'rgba(255, 255, 255, 0.5)';
@@ -126,14 +145,14 @@
       ctx.fillStyle = `rgba(255, 160, 180, ${opacity})`;
       ctx.shadowBlur = 0;
     }
-    
+
     ctx.fill();
     ctx.shadowBlur = 0;
   }
 
   // 动画循环
   function animate() {
-    if (isHidden || reducedMotion.matches) {
+    if (isHidden || isStopped || reducedMotion.matches) {
       animationId = requestAnimationFrame(animate);
       return;
     }
@@ -172,7 +191,7 @@
   }
 
   function start() {
-    if (!animationId) {
+    if (!animationId && !isStopped) {
       resize();
       initParticles();
       animate();
@@ -186,15 +205,31 @@
     }
   }
 
+  // 完全停止动画（用于用户偏好）
+  function halt() {
+    isStopped = true;
+    stop();
+  }
+
+  // 恢复动画
+  function resume() {
+    isStopped = false;
+    start();
+  }
+
   function handleVisibility() {
     isHidden = document.hidden;
     if (isHidden) {
       stop();
-    } else {
+    } else if (!isStopped && !reducedMotion.matches) {
       start();
     }
   }
 
+  // 初始化主题状态
+  updateTheme();
+
+  // 事件监听
   window.addEventListener('resize', () => {
     resize();
     initParticles();
@@ -202,24 +237,60 @@
 
   document.addEventListener('visibilitychange', handleVisibility);
 
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    isDarkMode = e.matches;
+  // 监听系统主题变化
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    updateTheme();
   });
 
+  // 监听主题切换按钮
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      // 主题切换后短暂延迟更新状态
+      setTimeout(updateTheme, 10);
+    });
+  }
+
+  // 使用 MutationObserver 监听 data-theme 属性变化
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+        updateTheme();
+      }
+    });
+  });
+
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme']
+  });
+
+  // 监听减少动画偏好变化
   reducedMotion.addEventListener('change', (e) => {
     if (e.matches) {
-      stop();
+      halt();
     } else {
-      start();
+      resume();
     }
   });
 
-  resize();
-  initParticles();
-
-  if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    start();
+  // 初始启动
+  if (reducedMotion.matches) {
+    halt();
   } else {
-    document.addEventListener('DOMContentLoaded', start);
+    resize();
+    initParticles();
+
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      start();
+    } else {
+      document.addEventListener('DOMContentLoaded', start);
+    }
   }
+
+  // 清理函数（页面卸载时）
+  window.addEventListener('beforeunload', () => {
+    stop();
+    observer.disconnect();
+  });
 })();

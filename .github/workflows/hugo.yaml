@@ -27,16 +27,8 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: latest
+          hugo-version: '0.150.0'
           extended: true
-
-      - name: Debug - Check hugo.toml
-        run: |
-          echo "=== hugo.toml content ==="
-          cat hugo.toml
-          echo ""
-          echo "=== Checking for paginate ==="
-          grep -n "paginate" hugo.toml || echo "No paginate found"
 
       - name: Build site
         run: hugo --minify
