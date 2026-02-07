@@ -28,9 +28,10 @@ theme = "PaperMod"
   showShareButtons = true
   enableMathJax = true  # Enable KaTeX math support
 
-  # Enable syntax highlighting (using Chroma)
+  # Favicon configuration
   [params.assets]
     disableHLJS = true  # Disable Highlight.js, use Hugo built-in Chroma
+    favicon = "favicon.svg"
 
 # Syntax highlighting configuration
 [markup]
