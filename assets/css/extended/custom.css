@@ -4,6 +4,28 @@
    ----------------------------------------------------------- */
 
 /* ============================================
+   0. Font Settings - 宋体
+   ============================================ */
+
+/* 设置全局字体为宋体 */
+body,
+.post-content,
+.entry-content,
+.post-entry,
+.archive-entry,
+#searchResults {
+    font-family: "SimSun", "Songti SC", "Noto Serif SC", serif;
+}
+
+/* 代码保持等宽字体 */
+code,
+pre,
+kbd,
+samp {
+    font-family: "Consolas", "Monaco", "Courier New", monospace !important;
+}
+
+/* ============================================
    1. CSS Variables - Dark mode colors
    ============================================ */
 

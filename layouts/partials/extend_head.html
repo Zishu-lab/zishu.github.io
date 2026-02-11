@@ -6,3 +6,16 @@
 
 {{- /* Favicon - Modern SVG favicon */ -}}
 <link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}">
+
+{{- /* Custom Font - 宋体 */ -}}
+<style>
+    body, body *, .post-content, .entry-content, .post-entry, .archive-entry, #searchResults, .post-single, article, main {
+        font-family: "SimSun", "Songti SC", "Noto Serif SC", "STSong", "AR PL UMing CN", "AR PL UMing HK", "AR PL New Sung", "AR PL SungtiL GB", "FandolSong-Regular", "Source Han Serif SC", serif !important;
+    }
+    h1, h2, h3, h4, h5, h6, p, span, div, li, td, th {
+        font-family: "SimSun", "Songti SC", "Noto Serif SC", "STSong", "AR PL UMing CN", "AR PL UMing HK", "AR PL New Sung", "AR PL SungtiL GB", "FandolSong-Regular", "Source Han Serif SC", serif !important;
+    }
+    code, pre, kbd, samp, .highlight, .chroma, .post-content code, .post-content pre {
+        font-family: "Consolas", "Monaco", "Courier New", monospace !important;
+    }
+</style>

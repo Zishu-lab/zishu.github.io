@@ -3,9 +3,12 @@ title = "Zishu-lab's Space"
 languageCode = "zh-cn"
 theme = "PaperMod"
 
+# Main sections for homepage
+mainSections = ["posts"]
+
 # Pagination configuration (for Hugo v0.128+)
 [pagination]
-  pagerSize = 5
+  pagerSize = 10  # Show more posts per page for tutorials
 
 # Enable search
 [outputs]

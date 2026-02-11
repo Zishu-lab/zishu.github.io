@@ -2,6 +2,7 @@
 title: "二维码扫描系统教程（三）：Flask框架与图像处理"
 date: 2026-02-11
 draft: false
+weight: 3
 tags: ["Flask", "OpenCV", "图像处理", "Python", "教程"]
 categories: ["技术教程"]
 description: "深入学习Flask Web框架和OpenCV图像处理技术，详细介绍二维码识别算法和位置估算原理，构建完整的后端服务。"

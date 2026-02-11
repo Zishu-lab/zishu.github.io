@@ -2,6 +2,7 @@
 title: "About Markdown Formatting"
 date: 2026-02-03
 draft: false
+weight: 100
 tags: ["markdown", "formatting", "guide"]
 categories: ["Tutorial"]
 description: "Markdown 格式教程，学习如何使用标题、列表、代码块、链接和图片等常用语法。"

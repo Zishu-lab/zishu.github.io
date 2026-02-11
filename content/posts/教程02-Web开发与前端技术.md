@@ -2,6 +2,7 @@
 title: "二维码扫描系统教程（二）：Web开发与前端技术"
 date: 2026-02-11
 draft: false
+weight: 2
 tags: ["Web开发", "HTML", "CSS", "JavaScript", "教程"]
 categories: ["技术教程"]
 description: "零基础学习Web前端开发的完整教程，详细介绍HTML结构、CSS样式、JavaScript交互，为二维码扫描项目打下前端基础。"
